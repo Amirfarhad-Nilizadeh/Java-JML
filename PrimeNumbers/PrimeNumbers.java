@@ -2,8 +2,8 @@
     public class PrimeNumbers
     {
         /*@ private normal_behavior  
-	  @    requires 1 < n;
-          @    requires d != 0;
+	  @    requires 2 <= n;
+          @    requires 2 <= d;
 	  @    ensures \result ==> n%d == 0; 
           @    pure function @*/
         private /*@ spec_public @*/ static boolean div(int n, int d) { return n%d == 0; }
@@ -13,12 +13,14 @@
           @ assignable primeArray;
 	  @ ensures \forall int i; 0 <= i && i < primeArray.length; \forall int j; 2 <= j && j <= primeArray[i]/2; !div(primeArray[i],j);
 	  @ ensures (\forall int i,j; 0 <= i && i < primeArray.length && 0 <= j && j < primeArray.length && i != j; primeArray[i] != primeArray[j]);
-	  @ ensures \forall int i; 0 <= i && i < primeArray.length; \forall int j; 0 <= j && j < primeArray.length && i != j; primeArray[i] != primeArray[j]; @*/
+	  @ ensures \forall int i; 0 <= i && i < primeArray.length; \forall int j; 0 <= j && j < primeArray.length && i != j; primeArray[i] != primeArray[j]; 
+	  @ ensures primeArray.length == n; @*/
         public int[] primeList(int n)
         {
           int status = 1, num = 3, count, j;
           primeArray = new int[n];
           primeArray[0] = 2;
+	  //@ assert primeArray.length == n;
 
           /*@ ghost int maxnumber = Integer.MAX_VALUE;
 	    @ ghost int count_counter = 2;

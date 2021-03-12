@@ -275,6 +275,7 @@ public class Time {
       @		ensures  stop == \old (stop);
       @	also
       @		requires sel == 4;
+      @		assignable \nothing;
       @		ensures \result.equals(difference(start, stop));
       @		ensures  start == \old (start);
       @		ensures  stop == \old (stop);

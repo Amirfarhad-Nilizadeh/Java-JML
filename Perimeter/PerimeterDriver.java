@@ -25,7 +25,7 @@ public class PerimeterDriver {
 	     @    requires 0 < w && 0 < x && 0 < y && 0 < z && w + x + y + z <= Integer.MAX_VALUE;
 	     @    ensures \result == w + x + y + z;
 	  @ |} @*/
-	 public /*@ pure @*/ long Driver(int select, int w, int x, int y, int z, short shortNum, long longNum) {
+	 public /*@ pure @*/ long driver(int select, int w, int x, int y, int z, short shortNum, long longNum) {
 
 		Perimeter p = new Perimeter();
 		long result = 0;
